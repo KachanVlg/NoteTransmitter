@@ -45,15 +45,30 @@ public class noteValidator {
 
     private List<ValidationException> validateTitle(String title){
 
-        if (title == null || !Pattern.matches(titleRegexp, title)) {
-            String exceptionDescription = (title == null)
-                    ? "Title is not set"
-                    : "Title must contain only white delimiters. At the same time, the first symbol must be a digit or letter.";
+        List<ValidationException> exceptions = new LinkedList<>();
 
-            return List.of(new ValidationException(exceptionDescription, ClientExceptionName.INVALID_TITLE));
+        if (title == null) {
+            String exceptionDescription = "Title is not set";
+            exceptions.add(new ValidationException(exceptionDescription, ClientExceptionName.INVALID_TITLE));
+
+            return exceptions;
         }
 
-        return List.of();
+        if (!Pattern.matches(titleRegexp, title)) {
+            String exceptionDescription = "Title must contain only white delimiters. " +
+                    "At the same time, the first symbol must be a digit or letter.";
+
+            exceptions.add(new ValidationException(exceptionDescription, ClientExceptionName.INVALID_TITLE));
+        }
+
+        if (title.length() > titleLength) {
+            String exceptionDescription = "Title length is too long. " +
+                    "Max length is " + titleLength + " symbols.";
+
+            exceptions.add(new ValidationException(exceptionDescription, ClientExceptionName.INVALID_TITLE));
+        }
+
+        return exceptions;
     }
 
     private List<ValidationException> validateContent(String content){
