@@ -58,7 +58,7 @@ public class noteValidator {
 
     private List<ValidationException> validateContent(String content){
 
-        if (content == null || !Pattern.matches(titleRegexp, content)) {
+        if (content == null || !Pattern.matches(contentRegexp, content)) {
             String exceptionDescription = (content == null)
                     ? "Content is not set"
                     : "Content must contain at least one digit or letter.";
