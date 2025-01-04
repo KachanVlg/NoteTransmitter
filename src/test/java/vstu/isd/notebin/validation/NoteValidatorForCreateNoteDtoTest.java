@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Slf4j
-class noteValidatorForCreateNoteDtoTest {
+class NoteValidatorForCreateNoteDtoTest {
 
     @Autowired
     private NoteValidator noteValidator;
