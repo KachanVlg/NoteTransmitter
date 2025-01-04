@@ -15,13 +15,13 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 
 @Component
-public class noteValidator {
+public class NoteValidator {
 
     private final String titleRegexp;
     private final String contentRegexp;
     private final int titleLength;
 
-    public noteValidator(
+    public NoteValidator(
             @Qualifier("titleRegexp") String titleRegexp,
             @Qualifier("contentRegexp") String contentRegexp,
             @Qualifier("titleLength") int titleLength
