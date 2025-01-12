@@ -31,8 +31,10 @@ class NoteValidatorTest {
         return "a".repeat(Math.max(0, length));
     }
 
-    int titleLength = 128;
-    int contentLength = 16384;
+    @Autowired
+    private int titleLength;
+    @Autowired
+    private int contentLength;
 
     @Autowired
     private NoteValidator noteValidator;
