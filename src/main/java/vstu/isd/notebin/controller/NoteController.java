@@ -39,7 +39,7 @@ public class NoteController {
         return noteMapper.toGetNoteResponseDto(noteDto);
     }
 
-    @PatchMapping("/{url}")
+    @PatchMapping("/deactivate/{url}")
     public ResponseEntity<Object> deactivateNote(@PathVariable String url) {
 
         noteService.deleteNote(url);
